@@ -28,6 +28,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin
+    container_name: phpmyadmin_insta
     depends_on:
       - mysql-asp8
     restart: always
