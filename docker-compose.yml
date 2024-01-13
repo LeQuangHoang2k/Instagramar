@@ -25,5 +25,21 @@ services:
       - instagamar
     volumes:
       - ./:/var/www/html/instagramar
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - mysql-asp8
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql-asp8
+      PMA_USER: root
+      PMA_PASSWORD: instagamar
+      MYSQL_ROOT_PASSWORD: instagamar
+    networks:
+      - instagamar
+
 networks:
   instagamar:
