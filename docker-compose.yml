@@ -7,14 +7,14 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: instagamar
-      MYSQL_DATABASE: instagamar
+      MYSQL_ROOT_PASSWORD: instagramar
+      MYSQL_DATABASE: instagramar
     ports:
       - 3304:3306
     expose:
       - 3306
     networks:
-      - instagamar
+      - instagramar
 
   asp:
     build: .
@@ -22,7 +22,7 @@ services:
     ports:
       - 32768:32768
     networks:
-      - instagamar
+      - instagramar
     volumes:
       - ./:/var/www/html/instagramar
 
@@ -37,10 +37,10 @@ services:
     environment:
       PMA_HOST: mysql-asp8
       PMA_USER: root
-      PMA_PASSWORD: instagamar
-      MYSQL_ROOT_PASSWORD: instagamar
+      PMA_PASSWORD: instagramar
+      MYSQL_ROOT_PASSWORD: instagramar
     networks:
-      - instagamar
+      - instagramar
 
 networks:
-  instagamar:
+  instagramar:
