@@ -20,7 +20,7 @@ services:
     build: .
     container_name: asp
     ports:
-      - 32768:32768
+      - 9000:32768
     networks:
       - instagramar
     volumes:
