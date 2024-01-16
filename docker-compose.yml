@@ -20,14 +20,18 @@ services:
     build: .
     container_name: asp
     ports:
-      - 9000:8080
-      - 9001:8081
+      - 8080:8080
+      - 8081:8081
     networks:
       - instagramar
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:8081;http://+:8080
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
       - ./:/app/publish
+      - ./cert/.aspnet/https:/https:ro
 
   phpmyadmin:
     image: phpmyadmin
@@ -36,12 +40,35 @@ services:
       - mysql-asp8
     restart: always
     ports:
-      - 8080:80
+      - 8082:80
     environment:
       PMA_HOST: mysql-asp8
       PMA_USER: root
       PMA_PASSWORD: instagramar
       MYSQL_ROOT_PASSWORD: instagramar
+    networks:
+      - instagramar
+    
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: instagramar
+    networks:
+      - instagramar
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 9003:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: instagramar
+      ME_CONFIG_MONGODB_URL: mongodb://root:instagramar@mongo:27017/
     networks:
       - instagramar
 
