@@ -20,11 +20,12 @@ services:
     build: .
     container_name: asp
     ports:
-      - 9000:32768
+      - 9000:32000
+      - 9001:32001
     networks:
       - instagramar
     volumes:
-      - ./:/var/www/html/instagramar
+      - /app/publish
 
   phpmyadmin:
     image: phpmyadmin

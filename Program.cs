@@ -1,7 +1,18 @@
+using Instagramar.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
+
 // Add Cors
+using MySqlConnector;
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
+
+//
+
+//
 
 //Add Cors
 builder.Services.AddCors(options =>
@@ -13,6 +24,9 @@ builder.Services.AddCors(options =>
                       });
 });
 
+//Add MySQL
+IServiceCollection serviceCollection = builder.Services.AddDbContext<SchoolContext>(options => options.UseSqlServer("name=ConnectionStrings:NombreCadena"));
+serviceCollection.AddDatabaseDeveloperPageExceptionFilter();
 
 // Add services to the container.
 
@@ -22,6 +36,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// ADD DB
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
