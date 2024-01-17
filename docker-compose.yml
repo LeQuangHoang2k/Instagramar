@@ -20,10 +20,12 @@ services:
     build: .
     container_name: asp
     ports:
-      - 9000:32000
-      - 9001:32001
+      - 9000:8080
+      - 9001:8081
     networks:
       - instagramar
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development 
     volumes:
       - /app/publish
 
@@ -34,7 +36,7 @@ services:
       - mysql-asp8
     restart: always
     ports:
-      - 8080:80
+      - 8083:80
     environment:
       PMA_HOST: mysql-asp8
       PMA_USER: root

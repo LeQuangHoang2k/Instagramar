@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <UserSecretsId>9b116ad4-3482-4a14-9910-e204b492099a</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,12 +20,20 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="MySqlConnector" Version="2.3.4" />
     <PackageReference Include="MySqlConnector.DependencyInjection" Version="2.3.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0-beta.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	<!-- useMySQL fix cannot find useMySQL--> 
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.1" />
+	<!-- useMySQL fix cannot find useMySQL stackoverflow.com/questions/40059929/cannot-find-the-usemysql-method-on-dbcontextoptions -->
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 
