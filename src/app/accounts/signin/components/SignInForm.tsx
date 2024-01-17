@@ -1,29 +1,53 @@
 "use client"
 
+import * as yup from "yup";
+
 import { Button, Paper, TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { BREAK_POINTS_NUMBER } from "@/constants/breakpoints";
 import Divider from '@mui/material/Divider';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Image from 'next/image';
 import Link from "next/link";
 import { SignIn } from '@/models';
 import instagramar from "../../../../../public/images/Instagramar.png";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type Inputs = {
     account: string
     password: string
 }
 export default function SignInForm() {
+    const schema = yup.object({
+        account: yup.string()
+            .required('This field is required')
+            .test(
+                'email-or-phone-or-string',
+                'Invalid account. Enter a valid email, phone number, or username',
+                (value) => {
+                    // Check for email
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    // Check for phone number
+                    const phoneRegex = /^\d{10}$/;
+
+                    return emailRegex.test(value) || phoneRegex.test(value) || typeof value === 'string';
+                }
+            ),
+
+        password: yup.string().required("This field is required!!")
+    })
+
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
-        reset
-    } = useForm<Inputs>()
+        reset,
 
+    } = useForm<Inputs>({
+        mode: "onBlur",
+        resolver: yupResolver(schema)
+    })
 
     const onSubmit: SubmitHandler<Inputs> = async ({ account, password }: SignIn) => {
 
