@@ -5,8 +5,8 @@ USER app
 WORKDIR /app
 #RUN apk add --no-cache icu-libs
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 9080
+EXPOSE 9081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
