@@ -7,9 +7,9 @@
     docker compose up -d --build
 ### run migration:
     docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]
-    example:  docker exec -d mycontainer dotnet ef migrations add InitialCreate
+    example:  docker exec asp-development dotnet ef migrations add InitialCreate
     
-    init shell: docker exec -it mycontainer sh
+    init shell: docker exec -it asp-development sh
 
 ## C# command:
 ### migration:
