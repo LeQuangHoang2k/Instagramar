@@ -15,3 +15,5 @@
 ### migration:
     dotnet ef migrations add InitialCreate
     dotnet ef database update
+### build:
+    dotnet publish "./Instagramar.csproj" -c Release -o ./publish 
