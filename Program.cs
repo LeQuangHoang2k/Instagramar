@@ -70,8 +70,8 @@ using (var context = new BlogDataContext())
 
 public class BlogDataContext : DbContext
 {
-    //static readonly string connectionString = "Server=mysql-asp8;Port=8080;Database=instagramar;User=root;Password=instagramar;";
-    static readonly string connectionString = "Server=localhost;Port=3306;Database=instagramar;User=root;Password=instagramar;";
+    static readonly string connectionString = "Server=mysql-asp8;Port=3306;Database=instagramar;User=root;Password=instagramar;";
+    
     public DbSet<Author> Authors { get; set; }
     public DbSet<Post> Posts { get; set; }
 

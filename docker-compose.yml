@@ -16,22 +16,42 @@ services:
     networks:
       - instagramar
 
-  asp:
-    build: .
-    container_name: asp
+  asp-development:
+    build:
+      context: .
+      dockerfile: development.Dockerfile
+    container_name: asp-development
     ports:
       - 8080:8080
       - 8081:8081
-    networks:
-      - instagramar
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:8081;http://+:8080
       - ASPNETCORE_Kestrel__Certificates__Default__Password=password
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
-      - ./:/app/publish
       - ./cert/.aspnet/https:/https:ro
+      - ./publish:/app
+    networks:
+      - instagramar
+
+  asp-production:
+    build:
+      context: .
+      dockerfile: production.Dockerfile
+    container_name: asp-production
+    ports:
+      - 9080:9080
+      - 9081:9081
+    environment:
+      - ASPNETCORE_URLS=https://+:9081;http://+9080
+      - ASPNETCORE_HTTPS_PORTS=9081
+      - ASPNETCORE_HTTP_PORTS=9080
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ./cert/.aspnet/https:/https:ro
+      - ./publish:/app/publish
+    networks:
+      - instagramar
 
   phpmyadmin:
     image: phpmyadmin
