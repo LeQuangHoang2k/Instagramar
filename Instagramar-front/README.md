@@ -38,8 +38,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Docker:
 ### pre-built:
     npm install
-    change docker-compose.yml in master branch (services: nextjs > build > context) match with your root folder
-    example: root is UI and the context is ./../UI
 ### built:
-    switch to folder contain back-end code and run:
     docker compose up -d --build
