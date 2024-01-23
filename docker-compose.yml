@@ -18,7 +18,7 @@ services:
 
   asp-development:
     build:
-      context: .
+      context: ./Instagramar
       dockerfile: development.Dockerfile
     container_name: asp-development
     ports:
@@ -28,30 +28,30 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Password=password
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
-      - ./cert/.aspnet/https:/https:ro
-      - ./:/app
+      - ./Instagramar/cert/.aspnet/https:/https:ro
+      - ./Instagramar:/app
     networks:
       - instagramar
 
-  asp-production:
-    build:
-      context: .
-      dockerfile: production.Dockerfile
-    container_name: asp-production
-    ports:
-      - 9080:9080
-      - 9081:9081
-    environment:
-      - ASPNETCORE_URLS=https://+:9081;http://+9080
-      - ASPNETCORE_HTTPS_PORTS=9081
-      - ASPNETCORE_HTTP_PORTS=9080
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
-    volumes:
-      - ./cert/.aspnet/https:/https:ro
-      - ./publish:/app/publish
-    networks:
-      - instagramar
+  # asp-production:
+  #   build:
+  #     context: .
+  #     dockerfile: production.Dockerfile
+  #   container_name: asp-production
+  #   ports:
+  #     - 9080:9080
+  #     - 9081:9081
+  #   environment:
+  #     - ASPNETCORE_URLS=https://+:9081;http://+9080
+  #     - ASPNETCORE_HTTPS_PORTS=9081
+  #     - ASPNETCORE_HTTP_PORTS=9080
+  #     - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+  #     - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+  #   volumes:
+  #     - ./Instagramar/cert/.aspnet/https:/https:ro
+  #     - ./Instagramar/publish:/app
+  #   networks:
+  #     - instagramar
 
   phpmyadmin:
     image: phpmyadmin
@@ -94,12 +94,12 @@ services:
   nextjs:
     container_name: nextjs
     build:
-      context: ./../UI
+      context: ./Instagramar-front
       dockerfile: Dockerfile
     ports:
       - 3001:3000
     volumes:
-      - ./../UI/:/app/
+      - ./Instagramar-front/:/app/
     networks:
       - instagramar
 networks:
