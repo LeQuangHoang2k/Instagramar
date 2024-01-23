@@ -6,7 +6,9 @@ name: .NET
 on:
   pull_request:
     branches: [ "develop" ]
-
+defaults:
+ run:
+  working-directory: ./Instargramar
 jobs:
   build:
 
@@ -18,8 +20,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
-    - name: move to .net src
-      run: cd Instargramar
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
