@@ -91,6 +91,16 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:instagramar@mongo:27017/
     networks:
       - instagramar
-
+  nextjs:
+    container_name: nextjs
+    build:
+      context: ./../UI
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    volumes:
+      - ./../UI/:/app/
+    networks:
+      - instagramar
 networks:
   instagramar:
