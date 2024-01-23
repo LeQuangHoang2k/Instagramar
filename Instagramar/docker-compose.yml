@@ -1,0 +1,106 @@
+version: '3.1'
+
+services:
+  mysql-asp8:
+    image: mysql:8
+    container_name: mysql-asp8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: instagramar
+      MYSQL_DATABASE: instagramar
+    ports:
+      - 3304:3306
+    expose:
+      - 3306
+    networks:
+      - instagramar
+
+  asp-development:
+    build:
+      context: .
+      dockerfile: development.Dockerfile
+    container_name: asp-development
+    ports:
+      - 8080:8080
+      - 8081:8081
+    environment:
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ./cert/.aspnet/https:/https:ro
+      - ./:/app
+    networks:
+      - instagramar
+
+  asp-production:
+    build:
+      context: .
+      dockerfile: production.Dockerfile
+    container_name: asp-production
+    ports:
+      - 9080:9080
+      - 9081:9081
+    environment:
+      - ASPNETCORE_URLS=https://+:9081;http://+9080
+      - ASPNETCORE_HTTPS_PORTS=9081
+      - ASPNETCORE_HTTP_PORTS=9080
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ./cert/.aspnet/https:/https:ro
+      - ./publish:/app/publish
+    networks:
+      - instagramar
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin_insta
+    depends_on:
+      - mysql-asp8
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      PMA_HOST: mysql-asp8
+      PMA_USER: root
+      PMA_PASSWORD: instagramar
+      MYSQL_ROOT_PASSWORD: instagramar
+    networks:
+      - instagramar
+    
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: instagramar
+    networks:
+      - instagramar
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 9003:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: instagramar
+      ME_CONFIG_MONGODB_URL: mongodb://root:instagramar@mongo:27017/
+    networks:
+      - instagramar
+  nextjs:
+    container_name: nextjs
+    build:
+      context: ./../UI
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    volumes:
+      - ./../UI/:/app/
+    networks:
+      - instagramar
+networks:
+  instagramar:
