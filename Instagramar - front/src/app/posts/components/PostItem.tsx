@@ -1,7 +1,3 @@
-import * as React from 'react';
-
-import { Avatar, TextField } from '@mui/material';
-
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
@@ -9,8 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Post } from '@/models';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
-import avatar from "../../../../public/images/man.png"
-import test from "../../../../public/images/test.jpg"
+import { TextField } from '@mui/material';
+import { images } from '@/constants';
 
 export interface IPostItemProps {
     post?: Post
@@ -22,7 +18,7 @@ export default function PostItem({ post }: IPostItemProps) {
             {/* POST HEADER */}
             <div className="post-header flex items-center pb-3">
                 <div className=" w-10 h-10">
-                    <Image src={avatar} alt='avatar' className='w-full h-full object-cover rounded-full' />
+                    <Image src={images.avatar} alt='avatar' className='w-full h-full object-cover rounded-full' />
                 </div>
 
                 <div className='text-sm font-semibold mx-2'>
@@ -37,7 +33,7 @@ export default function PostItem({ post }: IPostItemProps) {
 
             {/* POST'S IMAGES */}
             <div className="post-images w-full h-[580px]">
-                <Image src={test} alt='image' className='w-full h-full object-cover rounded-xl' />
+                <Image src={images.postTest} alt='image' className='w-full h-full object-cover rounded-xl' />
             </div>
 
             <div className="post-info text-sm my-1">
