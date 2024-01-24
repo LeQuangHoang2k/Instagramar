@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
+import ReduxProvider from '@/redux/provider';
 import ToastifyProvider from '@/components/Toastify'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,9 +28,11 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        <ToastifyProvider >
-          {children}
-        </ToastifyProvider>
+        <ReduxProvider >
+          <ToastifyProvider >
+            {children}
+          </ToastifyProvider>
+        </ReduxProvider>
       </body>
     </html>
   )
