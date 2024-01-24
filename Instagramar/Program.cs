@@ -1,4 +1,8 @@
+using Instagramar;
+using Instagramar.Models;
 using Microsoft.EntityFrameworkCore;
+// using System.Data.Entity;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -120,14 +124,16 @@ app.UseCors(x => x.AllowAnyHeader()
 app.Run();
 
 
-public class BlogDataContext : DbContext
+public class BlogDataContext : System.Data.Entity.DbContext
 {
     static readonly string connectionString = "Server=mysql-asp8;Port=3306;Database=instagramar;User=root;Password=instagramar;";
 
     public DbSet<Author> Authors { get; set; }
     public DbSet<Post> Posts { get; set; }
+    public DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+    protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         Console.WriteLine("0 - connect success");

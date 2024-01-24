@@ -11,6 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
@@ -29,6 +32,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.1" />
 	<!-- useMySQL fix cannot find useMySQL stackoverflow.com/questions/40059929/cannot-find-the-usemysql-method-on-dbcontextoptions -->
+    <!-- <PackageReference Include="Microsoft.AspNetCore.App" /> -->
   </ItemGroup>
 
   <ItemGroup>

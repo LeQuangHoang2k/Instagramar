@@ -1,6 +1,6 @@
 namespace Instagramar
 {
-    public class Users
+    public class User
     {
         // public DateOnly Date { get; set; }
 
