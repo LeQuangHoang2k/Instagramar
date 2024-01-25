@@ -18,4 +18,4 @@ ENV PATH $PATH:/root/.dotnet/tools
 
 # ENTRYPOINT [ "dotnet", "run"]
 ENTRYPOINT [ "dotnet", "run", "--launch-profile", "https" ]
-# ENTRYPOINT [ "dotnet", "watch", "run", "--launch-profile", "https" ]
+# ENTRYPOINT [ "dotnet", "watch", "run", "--launch-profile", "https" ].
