@@ -2,13 +2,13 @@ namespace Instagramar.Models.User;
 
 using System.ComponentModel.DataAnnotations;
 
-public class CreateRequest
+public class SignUpRequest
 {
     [Required]
     public string Username { get; set; }
 
     [Required]
-    [MinLength(6)]
+    [MinLength(10)]
     public string Password { get; set; }
 
     // [Required]

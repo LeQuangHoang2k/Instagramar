@@ -1,6 +1,6 @@
 //using Instagramar.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+// using Microsoft.EntityFrameworkCore;
 
 namespace Instagramar.Controllers
 {
