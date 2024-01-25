@@ -2,6 +2,7 @@ using Instagramar;
 using Instagramar.Models;
 using Microsoft.EntityFrameworkCore;
 // using System.Data.Entity;
+using System.Collections.Generic;
 
 
 var builder = WebApplication.CreateBuilder(args);

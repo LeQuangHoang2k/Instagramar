@@ -29,3 +29,6 @@
 ### BUG:    
     The type or namespace name 'DbContext' could not be found [closed]
     https://stackoverflow.com/questions/5741109/the-type-or-namespace-name-dbcontext-could-not-be-found
+
+    error CS0115: 'BlogDataContext.OnConfiguring(DbContextOptionsBuilder)': no suitable method found to override [/app/Instagramar.csproj]
+    https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0115
