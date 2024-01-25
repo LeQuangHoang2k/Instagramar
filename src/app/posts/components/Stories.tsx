@@ -23,16 +23,16 @@ export default function Stories(props: IStoriesProps) {
                 pagination={{
                     clickable: true,
                 }}
-                modules={[Pagination]}
+                // modules={[Pagination]}
                 className="mySwiper"
             >
                 {stories.map((story, key) => {
                     return <SwiperSlide key={key} className='flex flex-col'>
                         <div className="w-14 h-14 rounded-full mb-1">
-                            <Image className='w-full h-full object-cover rounded-full' width={0} height={0} src={story.image} alt={story.name} />
+                            <Image className='w-full h-full object-cover rounded-full' width={0} height={0} src={story.image} alt="avatar" priority={true} />
                         </div>
 
-                        <div className="name text-xs truncate w-full font-semibold">
+                        <div className="name text-xs truncate w-full font-semibold" >
                             {story.name}
                         </div>
                     </SwiperSlide>
