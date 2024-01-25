@@ -1,0 +1,24 @@
+name: NEXT.JS
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+    paths: 
+      - 'Instagramar-front/**'
+jobs:
+  nextjs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Instagramar-front
+        
+    steps:
+      - uses: actions/checkout@v4
+      - name: install node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - name: install node_modules
+        run: npm install
+      - name: build
+        run: npm run build
