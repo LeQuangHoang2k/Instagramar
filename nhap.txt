@@ -15,3 +15,5 @@ dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet tool update -g dotnet-aspnet-codegenerator
 
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
+
+dotnet add package Pomelo.EntityFrameworkCore.MySql --version 7.0.0

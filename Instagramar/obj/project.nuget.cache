@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CWYX+EHyg2V10rIUK+skuTUX9ebPsidwsvyOsuAzHrzZ+YZJRzKEMXYdQVj2C/xmv0KzVgPfbXgx072DVfRZiA==",
+  "dgSpecHash": "ipJx/qgVFC4a7wUphZPtytrrp9dt+Yz0N6LsWLyY+cLUNAp13dvhG5RnrEWTj92eRc2Cpqrv7+ER6Skndn2Scg==",
   "success": true,
   "projectFilePath": "F:\\8 - Project\\Instagramar\\Instagramar\\Instagramar.csproj",
   "expectedPackageFiles": [
@@ -118,6 +118,7 @@
     "C:\\Users\\theib\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\8.0.0\\microsoft.visualstudio.web.codegenerators.mvc.8.0.0.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\mono.texttemplating\\2.3.1\\mono.texttemplating.2.3.1.nupkg.sha512",
+    "C:\\Users\\theib\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\nuget.configuration\\6.3.1\\nuget.configuration.6.3.1.nupkg.sha512",
@@ -128,6 +129,7 @@
     "C:\\Users\\theib\\.nuget\\packages\\nuget.projectmodel\\6.3.1\\nuget.projectmodel.6.3.1.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\nuget.protocol\\6.3.1\\nuget.protocol.6.3.1.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\nuget.versioning\\6.3.1\\nuget.versioning.6.3.1.nupkg.sha512",
+    "C:\\Users\\theib\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\theib\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
