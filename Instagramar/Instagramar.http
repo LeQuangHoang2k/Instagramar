@@ -1,8 +1,6 @@
-@Instagramar_HostAddress = http://localhost:5274
+@Instagramar_HostAddress = http://localhost:5052
 
 GET {{Instagramar_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
-
-
