@@ -241,4 +241,11 @@ public class TodoItemsController : ControllerBase
            Name = todoItem.Name,
            IsComplete = todoItem.IsComplete
        };
+
+    [HttpGet("attribute")]
+    [CustomHeader]
+    public IActionResult CustomHeaderResponseFromAttribute()
+    {
+        return Ok();
+    }
 }
