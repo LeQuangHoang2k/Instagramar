@@ -142,7 +142,7 @@ namespace Instagramar.Controllers
             //return user;
             return new JsonResult(new
             {
-                message = "ok",
+                message = "Sign in Success",
                 request,
                 usernameFind,
                 emailFind,
@@ -162,16 +162,17 @@ namespace Instagramar.Controllers
                 return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
 
             bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(request.Password, usernameFind[0].HashPassword);
+            if (!isPasswordCorrect)
+                return new JsonResult(new { message = "Password is not matched", StatusCode = StatusCode(400) });
 
             //gen token
 
             return new JsonResult(new
             {
-                message = "ok",
+                message = "Login Success",
                 request,
-                //usernameFind,
-                //emailFind,
-                //phoneFind,
+                usernameFind,
+                isPasswordCorrect,
                 StatusCode = StatusCode(200)
             });
         }
@@ -186,13 +187,16 @@ namespace Instagramar.Controllers
             if (usernameFind.Count() == 0)
                 return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
 
+            request.NewPassword = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+
+            _mapper.Map(usernameFind[0], request);
+            _context.Entry(request).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+          
             return new JsonResult(new
             {
-                message = "ok",
+                message = "Change Password Success",
                 request,
-                //usernameFind,
-                //emailFind,
-                //phoneFind,
                 StatusCode = StatusCode(200)
             });
         }
