@@ -24,9 +24,9 @@ export default function Sidebar(props: ISidebarProps) {
             <div className="w-full h-4/5">
                 {sidebar.map((side, key) => {
                     return (
-                        <Button onClick={() => showNotifications()} key={key} className='w-full flex justify-start h-[50px] mb-2 normal-case text-black'>
-                            <Icon className='mr-2' fontSize='large' >{side.icon} </Icon>
-                            <span className='text-sm'>{side.name} </span>
+                        <Button onClick={() => showNotifications()} key={key} className='w-full flex justify-start p-3 my-1 normal-case text-black' >
+                            <Icon className='mr-2' fontSize='large'>{side.icon} </Icon>
+                            <span className='text-xl' >{side.name} </span>
                         </Button>
                     )
                 })}
