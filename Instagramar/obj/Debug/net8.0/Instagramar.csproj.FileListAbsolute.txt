@@ -254,3 +254,6 @@ F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\runtimes\win-x86\native\
 F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\MySqlConnector.dll
 F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\AutoMapper.dll
+F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\8 - Project\Instagramar\Instagramar\bin\Debug\net8.0\BCrypt.Net-Next.dll
