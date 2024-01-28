@@ -8,3 +8,7 @@ public class CustomHeaderAttribute : ResultFilterAttribute
         base.OnResultExecuting(context);
     }
 }
+
+//Response.Headers.Add("x-my-custom-header", "login-header");
+//var c = Request.Headers.TryGetValue("x-my-custom-header", out var traceValue);
+//traceValue[0]
