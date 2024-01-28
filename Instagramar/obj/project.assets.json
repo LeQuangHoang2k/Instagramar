@@ -8415,26 +8415,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\theib\\.nuget\\packages\\": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\8 - Project\\Instagramar\\Instagramar\\Instagramar.csproj",
+      "projectUniqueName": "/app/Instagramar.csproj",
       "projectName": "Instagramar",
-      "projectPath": "F:\\8 - Project\\Instagramar\\Instagramar\\Instagramar.csproj",
-      "packagesPath": "C:\\Users\\theib\\.nuget\\packages\\",
-      "outputPath": "F:\\8 - Project\\Instagramar\\Instagramar\\obj\\",
+      "projectPath": "/app/Instagramar.csproj",
+      "packagesPath": "/root/.nuget/packages/",
+      "outputPath": "/app/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\theib\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8517,7 +8515,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
