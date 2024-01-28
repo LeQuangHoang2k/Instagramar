@@ -142,7 +142,7 @@ namespace Instagramar.Controllers
             //return user;
             return new JsonResult(new
             {
-                message = "Sign in Success",
+                message = "Sign Up Success",
                 request,
                 usernameFind,
                 emailFind,
@@ -152,6 +152,7 @@ namespace Instagramar.Controllers
         }
 
         [HttpPost("SignIn")]
+        [CustomHeader]
         public async Task<ActionResult<User>> SignIn(SignIn request)
         {
             if (!ModelState.IsValid)
@@ -165,14 +166,10 @@ namespace Instagramar.Controllers
             if (!isPasswordCorrect)
                 return new JsonResult(new { message = "Password is not matched", StatusCode = StatusCode(400) });
 
-            //gen token
 
             return new JsonResult(new
             {
                 message = "Login Success",
-                request,
-                usernameFind,
-                isPasswordCorrect,
                 StatusCode = StatusCode(200)
             });
         }
@@ -189,14 +186,13 @@ namespace Instagramar.Controllers
 
             request.NewPassword = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
 
-            _mapper.Map(usernameFind[0], request);
-            _context.Entry(request).State = EntityState.Modified;
+            _mapper.Map(request, usernameFind[0]);
+            _context.Users.Update(usernameFind[0]);
             await _context.SaveChangesAsync();
           
             return new JsonResult(new
             {
                 message = "Change Password Success",
-                request,
                 StatusCode = StatusCode(200)
             });
         }
