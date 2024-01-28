@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Instagramar.Models;
 using Instagramar.Models.Request.User;
+using AutoMapper;
+using Microsoft.CodeAnalysis.Scripting;
+using Microsoft.AspNetCore.Identity;
 
 namespace Instagramar.Controllers
 {
@@ -15,10 +18,12 @@ namespace Instagramar.Controllers
     public class UsersController : ControllerBase
     {
         private readonly TodoContext _context;
+        private readonly IMapper _mapper;
 
-        public UsersController(TodoContext context)
+        public UsersController(TodoContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Users
@@ -123,11 +128,15 @@ namespace Instagramar.Controllers
             if (phoneFind.Count() != 0)
                 return new JsonResult(new { message = "Phone existed", StatusCode = StatusCode(400) });
 
+            //BCrypt
+            request.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            //bool isPasswordCorrect = BCrypt.Verify("my password", passwordHash);
             // map model to new user object
             //var userMapper = _mapper.Map<User>(user);
             //User model = this.Mapper.Map<User>(new user());
+            var userMapper = _mapper.Map<User>(request);
             //_mapper.Map(user, user);
-            //_context.Users.Add(userMapper);
+            _context.Users.Add(userMapper);
             await _context.SaveChangesAsync();
 
             //return user;
@@ -151,6 +160,10 @@ namespace Instagramar.Controllers
             var usernameFind = await _context.Users.Where(i => i.Username == request.Username).ToListAsync();
             if (usernameFind.Count() == 0)
                 return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
+
+            bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(request.Password, usernameFind[0].HashPassword);
+
+            //gen token
 
             return new JsonResult(new
             {

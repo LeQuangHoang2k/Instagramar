@@ -53,10 +53,14 @@
 
 using Microsoft.EntityFrameworkCore;
 using Instagramar.Models;
+using Instagramar.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
 builder.Services.AddDbContext<TodoContext>(opt =>
     opt.UseInMemoryDatabase("TodoList"));
 
