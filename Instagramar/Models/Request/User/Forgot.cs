@@ -8,8 +8,8 @@ namespace Instagramar.Models.Request.User
         [Required]
         [StringLength(10, ErrorMessage = "Book name is required")]
         public string Username { get; set; }
-        //[Required]
-        //[StringLength(10)]
-        //public string Password { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string NewPassword { get; set; }
     }
 }
