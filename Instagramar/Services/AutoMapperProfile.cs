@@ -11,7 +11,8 @@ namespace Instagramar.Services
             CreateMap<SignUp, User>()
                 .ForMember(user => user.HashPassword, opt => opt.MapFrom(src => src.Password));
             CreateMap<SignIn, User>();
-            CreateMap<Forgot, User>();
+            CreateMap<Forgot, User>()
+                .ForMember(user => user.HashPassword, opt => opt.MapFrom(src => src.NewPassword)).ReverseMap();
         }
     }
 }

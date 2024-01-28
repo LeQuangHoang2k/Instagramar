@@ -142,7 +142,7 @@ namespace Instagramar.Controllers
             //return user;
             return new JsonResult(new
             {
-                message = "ok",
+                message = "Sign Up Success",
                 request,
                 usernameFind,
                 emailFind,
@@ -152,6 +152,7 @@ namespace Instagramar.Controllers
         }
 
         [HttpPost("SignIn")]
+        [CustomHeader]
         public async Task<ActionResult<User>> SignIn(SignIn request)
         {
             if (!ModelState.IsValid)
@@ -162,16 +163,13 @@ namespace Instagramar.Controllers
                 return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
 
             bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(request.Password, usernameFind[0].HashPassword);
+            if (!isPasswordCorrect)
+                return new JsonResult(new { message = "Password is not matched", StatusCode = StatusCode(400) });
 
-            //gen token
 
             return new JsonResult(new
             {
-                message = "ok",
-                request,
-                //usernameFind,
-                //emailFind,
-                //phoneFind,
+                message = "Login Success",
                 StatusCode = StatusCode(200)
             });
         }
@@ -186,13 +184,15 @@ namespace Instagramar.Controllers
             if (usernameFind.Count() == 0)
                 return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
 
+            request.NewPassword = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+
+            _mapper.Map(request, usernameFind[0]);
+            _context.Users.Update(usernameFind[0]);
+            await _context.SaveChangesAsync();
+          
             return new JsonResult(new
             {
-                message = "ok",
-                request,
-                //usernameFind,
-                //emailFind,
-                //phoneFind,
+                message = "Change Password Success",
                 StatusCode = StatusCode(200)
             });
         }
