@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Instagramar.Models;
+using Instagramar.Models.Request.User;
 
 namespace Instagramar.Controllers
 {
@@ -102,6 +103,85 @@ namespace Instagramar.Controllers
         private bool UserExists(long id)
         {
             return _context.Users.Any(e => e.Id == id);
+        }
+
+        [HttpPost("SignUp")]
+        public async Task<ActionResult<User>> SignUp(SignUp request)
+        {
+            if (!ModelState.IsValid)
+                return new JsonResult(new { message = "Model is Wrong", StatusCode = StatusCode(400) });
+
+            var usernameFind = await _context.Users.Where(i => i.Username == request.Username).ToListAsync();
+            if (usernameFind.Count() != 0)
+                return new JsonResult(new { message = "Username existed", StatusCode = StatusCode(400) });
+
+            var emailFind = await _context.Users.Where(i => i.Email == request.Email).ToListAsync();
+            if (emailFind.Count() != 0)
+                return new JsonResult(new { message = "Email existed", StatusCode = StatusCode(400) });
+
+            var phoneFind = await _context.Users.Where(i => i.Phone == request.Phone).ToListAsync();
+            if (phoneFind.Count() != 0)
+                return new JsonResult(new { message = "Phone existed", StatusCode = StatusCode(400) });
+
+            // map model to new user object
+            //var userMapper = _mapper.Map<User>(user);
+            //User model = this.Mapper.Map<User>(new user());
+            //_mapper.Map(user, user);
+            //_context.Users.Add(userMapper);
+            await _context.SaveChangesAsync();
+
+            //return user;
+            return new JsonResult(new
+            {
+                message = "ok",
+                request,
+                usernameFind,
+                emailFind,
+                phoneFind,
+                StatusCode = StatusCode(200)
+            });
+        }
+
+        [HttpPost("SignIn")]
+        public async Task<ActionResult<User>> SignIn(SignIn request)
+        {
+            if (!ModelState.IsValid)
+                return new JsonResult(new { message = "Model is Wrong", StatusCode = StatusCode(400) });
+
+            var usernameFind = await _context.Users.Where(i => i.Username == request.Username).ToListAsync();
+            if (usernameFind.Count() == 0)
+                return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
+
+            return new JsonResult(new
+            {
+                message = "ok",
+                request,
+                //usernameFind,
+                //emailFind,
+                //phoneFind,
+                StatusCode = StatusCode(200)
+            });
+        }
+
+        [HttpPost("Forgot")]
+        public async Task<ActionResult<User>> Forgot(Forgot request)
+        {
+            if (!ModelState.IsValid)
+                return new JsonResult(new { message = "Model is Wrong", StatusCode = StatusCode(400) });
+
+            var usernameFind = await _context.Users.Where(i => i.Username == request.Username).ToListAsync();
+            if (usernameFind.Count() == 0)
+                return new JsonResult(new { message = "Username is not existed", StatusCode = StatusCode(400) });
+
+            return new JsonResult(new
+            {
+                message = "ok",
+                request,
+                //usernameFind,
+                //emailFind,
+                //phoneFind,
+                StatusCode = StatusCode(200)
+            });
         }
     }
 }
