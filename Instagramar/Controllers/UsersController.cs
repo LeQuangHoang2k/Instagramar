@@ -17,10 +17,10 @@ namespace Instagramar.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly InstagramarContext _context;
         private readonly IMapper _mapper;
 
-        public UsersController(TodoContext context, IMapper mapper)
+        public UsersController(InstagramarContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

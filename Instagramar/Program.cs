@@ -61,7 +61,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
-builder.Services.AddTransient<TodoContext>();
+builder.Services.AddTransient<InstagramarContext>();
+
+//builder.Services.AddTransient<TodoContext>();
 
 //builder.Services.AddDbContext<TodoContext>(opt =>
 //    opt.UseInMemoryDatabase("TodoList"));
