@@ -9,6 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: instagramar
       MYSQL_DATABASE: instagramar
+    volumes:
+      - ./mysql:/var/lib/mysql
     ports:
       - 3304:3306
     expose:
