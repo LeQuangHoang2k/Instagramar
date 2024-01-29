@@ -71,7 +71,9 @@
     dotnet ef migrations add InitialCreate
     dotnet ef database update
 
-
+    docker exec asp-development dotnet ef migrations add InitialCreate --context InstagramarContext
+    docker exec asp-development dotnet ef migrations remove InitialCreate --context InstagramarContext
+    docker exec asp-development dotnet ef database update --context InstagramarContext
 
 ### Scafford
     https://dottutorials.net/scaffold-mysql-dotnet-core-database-first-approach/
