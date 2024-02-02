@@ -1,13 +1,15 @@
-import "../auth.scss"
+import "../auth.scss";
 
-import { Button, Paper } from '@mui/material';
+import { Button, Icon, Paper } from '@mui/material';
 
 import Divider from '@mui/material/Divider';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Image from 'next/image';
 import Link from "next/link";
 import SignInForm from '../components/SignInForm';
+import SocialSignin from "../components/SocialSignIn";
 import instagramar from "../../../../public/images/Instagramar.png";
+import { signIn } from "next-auth/react";
 
 export interface ISignInProps {
 }
@@ -19,6 +21,8 @@ export function generateMetadata() {
 }
 
 export default function SignIn(props: ISignInProps) {
+
+
     return (
         <div className="w-1/2 h-full flex justify-center flex-col form-container">
             <div className="form">
@@ -32,7 +36,9 @@ export default function SignIn(props: ISignInProps) {
 
                     <Divider className='w-4/5 text-xs'> HOẶC </Divider>
 
-                    <Button className='text-[14px] font-semibold flex items-center my-4 capitalize'><FacebookIcon className='mr-2' /> Đăng nhập bằng Facebook </Button>
+                    <SocialSignin />
+
+                    <Divider className='w-4/5 text-xs'> HOẶC </Divider>
 
                     <Link href="/accounts/reset" className='text-blue-900 text-xs'>Quên mật khẩu</Link>
                 </Paper>

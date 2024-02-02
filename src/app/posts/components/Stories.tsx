@@ -18,8 +18,6 @@ export interface IStoriesProps {
 export default function StoryList(props: IStoriesProps) {
     const [isOpen, setIsOpen] = React.useState(false);
 
-
-
     return (
         <div className="post-story w-full h-[100px] relative text-black py-2 mt-6 mb-8">
             <Swiper

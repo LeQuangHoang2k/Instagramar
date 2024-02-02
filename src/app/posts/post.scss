@@ -24,3 +24,20 @@
     background: linear-gradient(to right, red, orange);
     padding: 3px;
 }
+
+@media only screen and (max-width: 1200px) {
+    .post-main {
+        width: 100%;
+
+        .post-item {
+            width: 90%;
+        }
+
+        .post-main {
+        }
+
+        .post-side-bar {
+            width: 10%;
+        }
+    }
+}

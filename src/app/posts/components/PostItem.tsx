@@ -25,7 +25,7 @@ export default function PostItem({ post }: IPostItemProps) {
                     khongphaiech
                 </div>
 
-                <div className="text-sm text-gray-400 flex items-center">
+                <div className="text-sm text-gray-500 flex items-center">
                     <span className='font-semibold text-2xl pb-3 mr-1'>.</span>
                     13 giờ
                 </div>
@@ -78,7 +78,7 @@ export default function PostItem({ post }: IPostItemProps) {
                 </div>
 
                 {/* SEE COMMENT */}
-                <div className='text-gray-400 my-1'>
+                <div className='text-gray-500 my-1'>
                     <Link href="/">Xem tất cả 17 bình luận</Link>
                 </div>
 

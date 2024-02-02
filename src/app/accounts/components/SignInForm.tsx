@@ -2,11 +2,13 @@
 
 import * as yup from "yup";
 
+import { Button, Icon } from '@mui/material';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from '@mui/material';
 import InputField from "./InputField";
+import Link from "next/link";
 import { SignIn } from '@/models';
+import { signIn } from "next-auth/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 type Inputs = {
@@ -60,9 +62,5 @@ export default function SignInForm() {
                 <Button style={{ background: "#0095f6", color: "#fff", textTransform: "capitalize", height: "2rem" }} variant='contained' type='submit'>Đăng nhập</Button>
             </form>
         </FormProvider>
-
-
-
-
     );
 }

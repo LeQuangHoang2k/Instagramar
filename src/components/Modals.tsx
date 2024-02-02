@@ -14,9 +14,6 @@ export interface ICustomModalProps {
     children: React.ReactNode
 }
 
-
-
-
 export default function CustomModal({ isOpen, onClose, styles, children }: ICustomModalProps) {
     const handleClose = () => {
         onClose(!isOpen)

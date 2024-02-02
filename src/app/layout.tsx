@@ -3,12 +3,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Inter } from 'next/font/google'
+import AuthProvider from '@/components/AuthProvider';
 import type { Metadata } from 'next'
-import ReduxProvider from '@/redux/provider';
+import { Montserrat } from 'next/font/google'
+import ReduxProvider from '@/redux/ReduxProvider';
 import ToastifyProvider from '@/components/Toastify'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Montserrat({ subsets: ['vietnamese'] })
 
 export const metadata: Metadata = {
   title: 'Instagramar',
@@ -30,11 +31,13 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        <ReduxProvider >
-          <ToastifyProvider >
-            {children}
-          </ToastifyProvider>
-        </ReduxProvider>
+        <AuthProvider>
+          <ReduxProvider >
+            <ToastifyProvider >
+              {children}
+            </ToastifyProvider>
+          </ReduxProvider>
+        </AuthProvider>
       </body>
     </html>
   )

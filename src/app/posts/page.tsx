@@ -1,4 +1,4 @@
-import * as React from 'react';
+import "./post.scss";
 
 import PostItem from './components/PostItem';
 import Stories from './components/Stories';
@@ -13,6 +13,7 @@ export function generateMetadata() {
 }
 
 export default function Posts(props: IPostsProps) {
+
     return (
         <div className="flex items-center w-4/5 flex-col">
             <Stories />
